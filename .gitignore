@@ -1,0 +1,36 @@
+# --- Beads issue tracker (Dolt-backed) ---
+# Issues live in a local Dolt database synced via `bd dolt push`, not committed
+# files. bd writes a detailed .beads/.gitignore on init; these are a safety net
+# for the db + per-machine runtime before that exists. config.yaml/metadata.json
+# stay trackable.
+.beads/embeddeddolt/
+.beads/dolt/
+.beads/proxieddb/
+.beads/*.db
+.beads/*.db-shm
+.beads/*.db-wal
+.beads-credential-key
+
+# --- Referenced projects (symlinks into $AGENTS_GIT_SRC_DIR; per-machine) ---
+# The symlinks and their clones are machine-specific; only the manifest
+# (projects.yaml) and projects/README.md are committed. See docs/adr/0004.
+/projects/*
+!/projects/README.md
+
+# --- Dependencies (projects manage their own; ignore any at root) ---
+node_modules/
+.venv/
+venv/
+__pycache__/
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- Local, per-user harness state (keep the pointers, ignore the state) ---
+.claude/settings.local.json
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
