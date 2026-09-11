@@ -34,3 +34,7 @@ Thumbs.db
 # Beads / Dolt files (added by bd init)
 .dolt/
 *.db
+
+# Stray per-harness skill mirror written by `npx skills add --all`; the
+# canonical location is .agents/skills (with .claude/skills symlinked to it).
+/agent/

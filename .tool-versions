@@ -1,0 +1,20 @@
+python 3.14.7
+uv 0.12.13
+nodejs 24.21.0
+pnpm 12.4.1
+
+# Baseline toolchains for every workspace:
+#   python + uv — agents are strong with Python
+#   nodejs      — provides npm/npx, required by the `skills` CLI (see below)
+#
+# Add workspace-specific toolchains below as needed — the blessed plugin set the
+# /setup-asdf skill knows how to provision is:
+#   pnpm golang ruby rust
+# e.g.
+#   golang 1.23.4
+#
+# /setup-asdf ensures every blessed plugin is installed, then runs
+# `asdf install` to install exactly the versions pinned in this file.
+#
+# External agent skills are managed with the `skills` CLI (npx skills), not
+# pinned here — the source of truth is skills-lock.json. See docs/adr/0002.
