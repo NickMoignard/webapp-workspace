@@ -18,14 +18,26 @@ are where its divergences from it are recorded.
 - [Workspace tooling](./CONTEXT.md) — the workspace itself: how projects are
   referenced (manifest + symlinks), skills, toolchains, issue tracking.
 - [Data Model as Code](./projects/data-model-as-code/CONTEXT.md) — four authoring layers: DBML data models, ODCS contracts, ODPS products and Ossie semantic models; DBML/Ossie integration is planned.
+- [Playbook Demo](./projects/playbook-demo/CONTEXT.md) — a purpose-built reference implementation of the engineering playbook: work packages, evidence and divergence, and the target SPA → BFF → data-products capability → owned PostgreSQL system.
 
 ## Relationships
 
-- The workspace references Data Model as Code and provides its shared tooling,
-  issue tracker and engineering playbook. Project planning and research
-  documents live in the project repository. No cross-project domain
-  relationships are established.
-- **Playbook standing.** Data Model as Code is a browser-only React + Vite SPA
+- The workspace references Data Model as Code and Playbook Demo, and provides
+  their shared tooling, issue tracker and engineering playbook. Project planning
+  and research documents live in each project's repository. No cross-project
+  domain relationships are established.
+- **Playbook Demo is the playbook's executable counterpart.** It exists to
+  demonstrate the workspace's own standard (see its
+  [ADR 0001](./projects/playbook-demo/docs/adr/0001-demonstrate-the-engineering-playbook.md)),
+  so the dependency runs both ways: a playbook amendment that invalidates
+  something demonstrated there obliges a matching change in the project, and a
+  rule that proves unclear while building there is fixed in the playbook page
+  rather than settled locally. It shares the *data product* term with Data Model
+  as Code, but the two model it independently and neither is authoritative for
+  the other.
+- **Playbook standing.** Playbook Demo is at WP-00 (skeleton only: no build,
+  no tests, nothing to run), converging by construction rather than by
+  migration; WP-01 is the next authorized step. Data Model as Code is a browser-only React + Vite SPA
   with no BFF or capability service, so most of the playbook's server-side
   surface does not yet apply to it. Its current divergences from the development
   defaults — npm rather than pnpm/Turbo, `node:test` via tsx rather than Vitest,
