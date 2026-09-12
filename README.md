@@ -1,6 +1,7 @@
 # webapp-workspace
 
-Building single-page web applications with Next.js, deployed on Vercel.
+Engineering workspace for standalone React applications, TypeScript BFFs,
+and capability-aligned TypeScript, Go, and Python services.
 
 This is an **agent workspace**: a parent directory that references several
 projects (as symlinks to shared clones) so an agent and a human in VS Code can
@@ -26,8 +27,24 @@ into `projects/`. Add one with:
 make add-project URL=<git-url>
 ```
 
-_No projects referenced yet._ This workspace is set up to spin up new
-Next.js SPAs; add each one here once it has a repo.
+See [`CONTEXT-MAP.md`](./CONTEXT-MAP.md) for project contexts and relationships.
+
+## Engineering playbook
+
+**Every project referenced here follows the
+[engineering playbook](docs/engineering-playbook/index.md)** — architecture,
+development, contracts, operations, delivery, and reusable docs templates. The
+defaults are a standalone React/Vite SPA, a TypeScript/Fastify BFF, and
+capability-aligned TypeScript, Go, or Python services. A project that predates
+the playbook converges on it: each divergence is recorded as a project ADR and
+the remaining work is tracked in beads, so adoption is a direction of travel
+rather than a claim that every project already complies.
+
+Three local skills support it: `engineering-playbook` applies the standards,
+`platform-slice` implements an authorized increment, and `platform-review`
+checks compliance and evidence. The executable product template remains separate
+implementation work; nothing in the playbook is a working command in this
+parent workspace yet.
 
 ## Stack & skills
 

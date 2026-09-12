@@ -1,9 +1,10 @@
-# Agent Workspace Template
+# Workspace tooling
 
-The shared language for this template: what a workspace is, what it groups, and
-how it references the projects worked on inside it. This is a glossary, not a
-spec. This is the workspace's own context; `CONTEXT-MAP.md` indexes it alongside
-one context per referenced project.
+The shared language of this workspace: what a workspace is, what it groups, how
+it references the projects worked on inside it, and the engineering standard
+those projects follow. This is a glossary, not a spec. This is the workspace's
+own context; `CONTEXT-MAP.md` indexes it alongside one context per referenced
+project.
 
 ## Language
 
@@ -44,15 +45,47 @@ repo basename. It is a **YAML** file, `projects.yaml`, parsed with `yq`, whose
 one key `projects:` is a flat list of clone-URL strings.
 _Avoid_: lockfile (it does not pin versions), .gitmodules.
 
+**Engineering playbook**:
+The workspace-owned engineering standard in `docs/engineering-playbook/`, and
+the three skills that apply it. It states architecture invariants, development
+defaults, contract and data ownership rules, operational baselines, and a
+delivery roadmap. Every Project this Workspace references follows it; the
+Workspace itself is not governed by it, since it is not a Product. Its pages
+state directly what to do — an unclear rule is fixed in the page, not
+interpreted locally.
+_Avoid_: style guide (it constrains architecture, not formatting), template.
+
+**Product**:
+A Project that ships the playbook's browser → BFF → capability → persistence
+stack, and therefore owns executable templates, generators, CI and its own
+knowledge base. Every Product is a Project; a Project is not necessarily a
+Product yet.
+_Avoid_: app (one Product may contain several apps and services).
+
+**Deviation**:
+A departure from the Engineering playbook recorded in the Project's own
+`docs/adr/`, with its rationale and intended resolution. Recording one is how a
+Project diverges legitimately; an unrecorded departure is a gap to be tracked in
+beads, not an exemption. No Project opts out of the playbook.
+_Avoid_: exception, opt-out, waiver.
+
+**Work package** (**WP-01**…**WP-12**):
+A unit of the playbook's delivery roadmap, each with a scope and an exit
+condition. A WP is the source description of work, not its status: concrete
+beads issues reference a WP ID, and the roadmap is never used as a second issue
+tracker.
+_Avoid_: epic, ticket, milestone.
+
 **Bootstrapping** (the **create-agent-workspace** skill):
-Creating a new Workspace by scaffolding this template's contents into an empty
+Creating a new Workspace by scaffolding the template's contents into an empty
 directory. Done by the `create-agent-workspace` skill, installed standalone via
 the skills.sh CLI (`npx skills`), so an agent can run it in any empty dir. It
 runs a mechanical file-copy (the bootstrap script), then an interactive
 setup conversation (rewrite the README, configure `projects.yaml`, choose
 default skills). The skill lives in its own standalone repo
-(`create-agent-workspace`); this template repo is the scaffold source it fetches.
-The new Workspace does not inherit the template's git history.
+(`create-agent-workspace`); the `agent-workspace-template` repo is the scaffold
+source it fetches, and this Workspace was created from it. A new Workspace does
+not inherit the template's git history.
 _Avoid_: fork, clone (the new Workspace is neither).
 
 ## Flagged ambiguities
@@ -60,6 +93,10 @@ _Avoid_: fork, clone (the new Workspace is neither).
 - **"add a project"** now means *record it in the Manifest, clone it into the
   Git source dir if absent, and symlink it into `projects/`* — no longer
   `git submodule add`.
+- **"adopting the playbook"** no longer distinguishes anything in this
+  Workspace: every referenced Project follows it. Where the phrase appears in
+  imported material, read it as *how far a Project has converged*, not *whether
+  the playbook applies*.
 
 ## Example dialogue
 

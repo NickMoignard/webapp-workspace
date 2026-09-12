@@ -8,6 +8,38 @@ file — never the harness-specific ones.
 > Pointers: `CLAUDE.md` → `@AGENTS.md`, `.claude/skills` → `.agents/skills`,
 > `.cursor/rules` → `.agents/`. See "Harness pointers" below.
 
+## Before you implement anything
+
+**Every project in `projects/` follows the
+[engineering playbook](docs/engineering-playbook/index.md).** Read it before
+writing code, designing an interface, or scaffolding anything in a project —
+not after. It is the standard, not background reading: architecture invariants
+(ARC-01…08), stack defaults, contract and data-ownership rules, the operational
+baseline every deployable implements, and the WP-01…WP-12 delivery roadmap.
+
+Start at the [index](docs/engineering-playbook/index.md), then read only the
+page your task touches:
+[architecture](docs/engineering-playbook/architecture.md),
+[development](docs/engineering-playbook/development.md),
+[contracts and data](docs/engineering-playbook/contracts-and-data.md),
+[operations](docs/engineering-playbook/operations.md),
+[delivery](docs/engineering-playbook/delivery.md),
+[knowledge base](docs/engineering-playbook/knowledge-base.md).
+
+Three workspace-owned skills carry the procedure — invoke the matching one
+rather than working from memory of this file:
+
+| When you are about to | Use |
+| --- | --- |
+| Design or change a feature, endpoint, component or service | [engineering-playbook](.agents/skills/engineering-playbook/SKILL.md) |
+| Implement an authorized slice, work package or generator | [platform-slice](.agents/skills/platform-slice/SKILL.md) |
+| Assess a project, design or diff for compliance and evidence | [platform-review](.agents/skills/platform-review/SKILL.md) |
+
+Two things this does not mean: the parent workspace is not a product (it keeps
+its Make/asdf/beads workflow, see below), and a project that predates the
+playbook is not rewritten on sight — see "Engineering playbook" for how
+divergence is recorded.
+
 ## What this workspace is
 
 An **agent workspace** is a parent directory that groups several projects
@@ -84,15 +116,48 @@ them.
 4. **Track work in beads.** Use `bd` (`bd create`, `bd ready`, `bd list`) for
    issues rather than scattering TODOs. See "Issue tracking (beads)" below; run
    `bd prime` for the full, current workflow.
-5. **Don't let projects go stale.** Run `make update-projects` regularly.
-6. **Maintain the context map.** This is a multi-context workspace: `CONTEXT-MAP.md`
+5. **Read the engineering playbook before implementing.** It governs every
+   referenced project; apply it to new work and record divergence as a project
+   ADR rather than treating it as an exemption. See "Before you implement
+   anything" above and "Engineering playbook" below.
+6. **Don't let projects go stale.** Run `make update-projects` regularly.
+7. **Maintain the context map.** This is a multi-context workspace: `CONTEXT-MAP.md`
    at the root indexes each project's context (and `CONTEXT.md` holds the
    workspace's own vocabulary). When you add or remove a project, register or
    remove its context entry and update the relationships so the map never lies.
 
 ## Skills
 
-Skills live in `.agents/skills/<name>/SKILL.md`. Available in this template:
+### Engineering playbook
+
+**Every project this workspace references follows the engineering playbook.**
+Read [`docs/engineering-playbook/index.md`](docs/engineering-playbook/index.md)
+and the task-specific references it links before designing or changing one. The
+defaults are a standalone React/Vite SPA, TypeScript/Fastify BFF, and
+capability-aligned TypeScript, Go, or Python services. A project that predates
+the playbook converges on it: record each divergence as a project ADR with its
+intended resolution and track the remaining work in beads — an unrecorded
+divergence is a gap, not an exemption, and no request to change one part of a
+project authorizes migrating the rest of it. This parent workspace is not a
+product; it retains its Make/asdf/beads workflow.
+
+Use [engineering-playbook](.agents/skills/engineering-playbook/SKILL.md) to apply
+the standards, [platform-slice](.agents/skills/platform-slice/SKILL.md) to build
+an authorized product slice or generator increment, and
+[platform-review](.agents/skills/platform-review/SKILL.md) to assess compliance
+and executable evidence. These are workspace-owned skills, not external
+lockfile entries. Imported skill tooling preferences apply where compatible:
+Jest/NestJS guidance does not replace adopted Vitest/Fastify defaults, and
+Next.js/Vercel guidance does not change the standalone SPA architecture.
+
+Product implementation commands and WP acceptance gates live in the playbook;
+their documentation does not mean the executable template has been built. If the
+playbook is unclear for the task in front of you, sharpen the page — do not
+settle it in a local reading that the next agent cannot see.
+
+### Workspace and external skills
+
+Skills live in `.agents/skills/<name>/SKILL.md`. Available here:
 
 - **setup-homebrew** — install/configure Homebrew. Run this first when
   onboarding a machine (asdf installs via brew).
