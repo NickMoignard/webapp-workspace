@@ -15,11 +15,10 @@ for how skills consume these files. Per-context ADRs live in
 
 - [Workspace tooling](./CONTEXT.md) — the workspace itself: how projects are
   referenced (manifest + symlinks), skills, toolchains, issue tracking.
-- _One entry per referenced project, pointing at its own `CONTEXT.md` (read
-  through the symlink; it lives in the project's repo):_
-  - `[<name>](./projects/<name>/CONTEXT.md)` — <one-line description>
+- [Data Model as Code](./projects/data-model-as-code/CONTEXT.md) — managing data models as code and visualizing them; domain discovery pending.
 
 ## Relationships
 
-- _How the contexts relate: shared types, events, cross-project dependencies.
-  Empty until the workspace references more than one project._
+- The workspace references Data Model as Code and provides its shared tooling
+  and issue tracker. Project planning and research documents live in the project
+  repository. No cross-project domain relationships are established.

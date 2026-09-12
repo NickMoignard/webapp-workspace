@@ -10,6 +10,10 @@
     {
       "name": "⚙︎ workspace-root",
       "path": "."
+    },
+    {
+      "name": "data-model-as-code",
+      "path": "projects/data-model-as-code"
     }
   ],
   "settings": {

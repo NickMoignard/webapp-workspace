@@ -11,4 +11,6 @@
 #   - git@github.com:me/yamlx.git
 #   - https://github.com/acme/infra.git
 
-projects: []
+# Local repository; replace with its remote clone URL when one is created.
+projects:
+  - file:///home/nlm/agents/git_repos/data-model-as-code
