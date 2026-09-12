@@ -32,9 +32,9 @@ are where its divergences from it are recorded.
   so the dependency runs both ways: a playbook amendment that invalidates
   something demonstrated there obliges a matching change in the project, and a
   rule that proves unclear while building there is fixed in the playbook page
-  rather than settled locally. It shares the *data product* term with Data Model
-  as Code, but the two model it independently and neither is authoritative for
-  the other.
+  rather than settled locally. Its product domain — Demo Tasks, a B2B to-do
+  product sold per seat — is deliberately unrelated to data modelling, and the
+  two projects share no domain vocabulary.
 - **Playbook standing.** Playbook Demo is at WP-01 (pnpm/Turbo foundation,
   pinned toolchain, shared lint/format/TypeScript config; `pnpm check` green
   from a clean clone, no application yet), converging by construction rather
