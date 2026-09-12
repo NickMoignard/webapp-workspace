@@ -35,9 +35,10 @@ are where its divergences from it are recorded.
   rather than settled locally. It shares the *data product* term with Data Model
   as Code, but the two model it independently and neither is authoritative for
   the other.
-- **Playbook standing.** Playbook Demo is at WP-00 (skeleton only: no build,
-  no tests, nothing to run), converging by construction rather than by
-  migration; WP-01 is the next authorized step. Data Model as Code is a browser-only React + Vite SPA
+- **Playbook standing.** Playbook Demo is at WP-01 (pnpm/Turbo foundation,
+  pinned toolchain, shared lint/format/TypeScript config; `pnpm check` green
+  from a clean clone, no application yet), converging by construction rather
+  than by migration; WP-02 is the next authorized step. Data Model as Code is a browser-only React + Vite SPA
   with no BFF or capability service, so most of the playbook's server-side
   surface does not yet apply to it. Its current divergences from the development
   defaults — npm rather than pnpm/Turbo, `node:test` via tsx rather than Vitest,
