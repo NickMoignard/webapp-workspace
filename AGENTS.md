@@ -155,6 +155,12 @@ their documentation does not mean the executable template has been built. If the
 playbook is unclear for the task in front of you, sharpen the page — do not
 settle it in a local reading that the next agent cannot see.
 
+For AFK delivery or the standard subagent worktree workflow, use
+[afk-workflow](.agents/skills/afk-workflow/SKILL.md). Unlike the three skills
+above it is an external lockfile entry, published from
+[NickMoignard/agent-afk-workflow](https://github.com/NickMoignard/agent-afk-workflow)
+and refreshed by `make update-agent-skills` — edit it there, not here.
+
 ### Workspace and external skills
 
 Skills live in `.agents/skills/<name>/SKILL.md`. Available here:

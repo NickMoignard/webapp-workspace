@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "afk-workflow": {
+      "source": "NickMoignard/agent-afk-workflow",
+      "sourceType": "github",
+      "skillPath": "skills/afk-workflow/SKILL.md",
+      "computedHash": "17a37d27b5956bef6fcdeec0f7543aa33e386ddf6cd758b855d98b427882c0b5"
+    },
     "agent-browser": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
